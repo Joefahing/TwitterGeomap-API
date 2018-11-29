@@ -14,6 +14,10 @@ app.get('/', function(req, res){
     })
 })
 
+app.post('/search', function(req, res){
+    
+})
+
 const port = process.env.port || 3400
 app.listen(port, function(){
     console.log('Listening to port 3400')
