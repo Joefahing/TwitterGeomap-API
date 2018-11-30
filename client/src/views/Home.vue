@@ -2,56 +2,63 @@
   <div class="home" >
 
 
-        <inputforms v-on:urlToParent="onSearchClick" >
-
-        </inputforms>
-
-        <!-- <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Image URL">
-          <div class="input-group-append">
-              <button type="button" class="btn btn-primary">Search</button>
-          </div>
-        </div> -->
-
-        <!-- <div class="form-group has-success">
-          <input type="text" value="correct value" class="form-control is-valid" id="validInput">
-          <div class="valid-feedback">Success!</div>
-        </div> -->
-
-        <!-- <div class="form-group has-danger">
-          <input type="text" value="wrong value" class="form-control is-invalid" id="invalidInput">
-          <div class="invalid-feedback">Sorry, invalid url! Try another?</div>
-        </div> -->
-
+        <inputforms v-on:urlToParent="onSearchClick" ></inputforms>
+        <predictselect v-bind:prediction ="prediction"></predictselect>
   </div>
 </template>
 
 <script>
 // @ is an alias to /sr
 import inputforms from '../components/inputforms.vue'
+import predictselect from '../components/predictselect.vue'
+const API_URL = "http://localhost:3400/search"
 
 export default {
-  data(){
-    return{
-        imageurl:''
+  
+  name: 'home',
+  data: function(){
+    return {
+      imageURL: {
+      url: ''
+    },
+    prediction:[]
     }
   },
-  name: 'home',
   components:{
-    inputforms
+    inputforms,
+    predictselect
   },
   methods:{
-    onSearchClick(value){
-      console.log(value)
-      this.imageurl = value
-    }
+    //Assignment url from input box to imageURL.url
+    onSearchClick(url){
+     this.imageURL ={
+        url: url
+      }
+
+      //POST api request with url as json
+      fetch(API_URL, {
+        method: 'POST', 
+        body: JSON.stringify(this.imageURL),
+        headers:{
+          'content-type': 'application/json'
+        } 
+      }).then(response => response.json())
+      .then((response)=>{
+        this.prediction = response
+        console.log(response)
+      })
+    },
+    
+
+
   }
+
 };
 </script>
 
 <style>
   .home{
-    padding-top: 20%;
+    padding-top: 13%;
   }
 </style>
 

@@ -46,14 +46,13 @@ export default {
     //return data bind to input field
     data(){
         return{
-            url: "",
+            url: '',
             type: 'valid'
         }
     },
     name: 'inputforms',
 
     methods:{
-        
         emitToParent(event){
             console.log('running emitToParent')
             if(!isImageUrl(this.url)){
