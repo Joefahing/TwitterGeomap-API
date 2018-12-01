@@ -54,13 +54,13 @@ export default {
 
     methods:{
         emitToParent(event){
-            console.log('running emitToParent')
             if(!isImageUrl(this.url)){
-                this.type = 'invalid'
+                this.type = 'invalid'            
                 this.url = ''
+
             } else{
                 this.type = 'valid'
-                this.$emit('urlToParent', this.url)
+                this.$emit('urlToParent', this.url)   
             }
         }
     }

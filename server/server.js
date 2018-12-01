@@ -34,7 +34,7 @@ app.post('/search', function(req, res){
             predictions.push(responsetags[index])
         }
         //sending prediction back to client
-        res.json(JSON.stringify(predictions))
+        res.json(predictions)
         res.status(200)
     })
 

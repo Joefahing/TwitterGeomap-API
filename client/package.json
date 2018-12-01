@@ -10,6 +10,7 @@
   "dependencies": {
     "is-image-url": "^1.1.8",
     "vue": "^2.5.17",
+    "vue-google-heatmap": "^1.0.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
