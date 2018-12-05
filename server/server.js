@@ -3,7 +3,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const database = require('./db/tweets')
+const twitter = require('./custom_modules/twitter_mod')
 const clarifai = require('./custom_modules/clarifai_mod')
+
 
 const app = express()
 app.use(cors())
@@ -40,7 +42,25 @@ app.post('/search', function(req, res){
 
 })
 
+app.post('/tweets', function(req, res){
+    
+    console.log('Before twitter')
+
+    twitter.getHashtagCoordinates(req.body, async function(result){
+        var geocoordinates = []
+        await twitter.translateGeocode(result, geocoordinates)
+        console.log(geocoordinates)
+
+        res.json(geocoordinates)
+
+        console.log('After json send')
+    })
+
+})
+
 const port = process.env.port || 3400
 app.listen(port, function(){
     console.log('Listening to port 3400')
 })
+
+

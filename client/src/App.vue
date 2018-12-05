@@ -9,7 +9,7 @@
   </button>
 
 </nav>
-    <router-view class="container"/>
+    <router-view class="container-fluid" style="padding-right: 10%; padding-left: 10%;"/>
   </div>
 </template>
 

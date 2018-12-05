@@ -7,6 +7,7 @@
              <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Image URL" v-model= "url">
                 <div class="input-group-append">
+                    <!-- Can use @keypress.enter instead -->
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>

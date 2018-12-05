@@ -7,11 +7,18 @@
         <template v-if="prediction.length != 0">
           <div class="row">
              <div class="col-" style="margin-right: 20px; padding-left:13px; ">
-                <predictselect v-bind:prediction ="prediction"></predictselect>
+                <predictselect 
+                v-bind:prediction ="prediction"
+                v-on:tagsForParent ="onTagClick">
+                </predictselect>
              </div>
 
              <div class="col-lg">
-               <CustomMap></CustomMap>
+              <CustomMap
+               :longitude="this.coordinates.longitude"
+               :latitude="this.coordinates.latitude"
+               :geocode="this.geocode">
+               </CustomMap>
              </div>
 
           </div>
@@ -26,15 +33,28 @@ import inputforms from '../components/inputforms.vue'
 import predictselect from '../components/predictselect.vue'
 import CustomMap from  '../components/map.vue'
 const API_URL = "http://localhost:3400/search"
+const TWITTER_API_URL = "http://localhost:3400/tweets"
 
 export default {
   
   name: 'home',
   data: function(){
     return {
-      imageURL: {
+      
+    imageURL: {
       url: ''
     },
+    
+    geocode: [{
+        "lat": 27.6648274,
+        "lng": -81.5157535
+    }],
+
+    coordinates:{
+      latitude: 40.730610,
+      longitude: -73.935242
+    },
+
     prediction:[]
     }
   },
@@ -49,6 +69,8 @@ export default {
       this.imageURL ={
           url: url
       }
+            console.log("Running post search request")
+
 
       //reset selection array
       this.prediction = []
@@ -70,6 +92,27 @@ export default {
       })
     },
     
+    onTagClick(hashtag){
+      console.log("Running post request: "+ hashtag)
+      this.geocode = []
+      fetch(TWITTER_API_URL,{
+        method: 'POST',
+        body: JSON.stringify({
+            tag: hashtag,
+            latitude: this.coordinates.latitude,
+            longitude: this.coordinates.longitude
+        }),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(response => 
+      response.json()
+      )
+      .then((result) => {
+         
+         this.geocode = result
+      })
+    }
 
 
   }
