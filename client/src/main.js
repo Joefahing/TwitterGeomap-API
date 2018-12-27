@@ -5,7 +5,7 @@ import router from './router';
 import VueGoogleHeatmap from 'vue-google-heatmap';
  
 Vue.use(VueGoogleHeatmap, {
-  apiKey: 'AIzaSyCLRCFj43n16cxJcYkxAplEwKdAU_7cp6U'
+  apiKey: 'AIzaSyB8HXh5SQwxFA_wogoj1uwpWlVNJ2YbpLQ'
 });
 
 Vue.config.productionTip = false;

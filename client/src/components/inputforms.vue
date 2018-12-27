@@ -4,13 +4,24 @@
     <form @submit.prevent ="emitToParent">
          
          <template v-if= "type == 'valid'">
-             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Image URL" v-model= "url">
-                <div class="input-group-append">
-                    <!-- Can use @keypress.enter instead -->
-                    <button type="submit" class="btn btn-primary">Search</button>
+             <div class="row">
+                 <div class="col-sm">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Image URL" v-model= "url">
+                        </div>
+                </div>
+
+                <div class="col-sm">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="City Name" v-model= "city">
+                            <div class="input-group-append">
+                                <!-- Can use @keypress.enter instead -->
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
                 </div>
             </div>
+            
          </template>
 
         <!-- 
@@ -25,16 +36,14 @@
                 </div>
                 <div class="invalid-feedback">Sorry, invalid url! Try another?</div>
             </div>
+
+            <!-- Have to be modified in case of invalid input -->
+
+            
          </template>
 
     </form>   
 
-       
-
-        <!-- <div class="form-group has-danger">
-          <input type="text" value="wrong value" class="form-control is-invalid" id="invalidInput">
-          <div class="invalid-feedback">Sorry, invalid url! Try another?</div>
-        </div>  -->
 
     </div>
 </template>
@@ -48,20 +57,26 @@ export default {
     data(){
         return{
             url: '',
-            type: 'valid'
+            type: 'valid',
+            city: '',
         }
     },
     name: 'inputforms',
 
     methods:{
         emitToParent(event){
-            if(!isImageUrl(this.url)){
+            //Have to be modify for form validation
+            if(!isImageUrl(this.url)&& this.city != ''){
                 this.type = 'invalid'            
                 this.url = ''
 
             } else{
                 this.type = 'valid'
-                this.$emit('urlToParent', this.url)   
+                this.$emit('urlToParent', {
+                            url: this.url,
+                            city: this.city
+                        }
+                    )   
             }
         }
     }

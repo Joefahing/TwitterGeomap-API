@@ -42,7 +42,8 @@ export default {
     return {
       
     imageURL: {
-      url: ''
+      url: '',
+      location: ''
     },
     
     geocode: [{
@@ -65,11 +66,12 @@ export default {
   },
   methods:{
     //Assignment url from input box to imageURL.url
-    onSearchClick(url){
+    onSearchClick(object){
       this.imageURL ={
-          url: url
+          url: object.url,
+          city: object.city
+
       }
-            console.log("Running post search request")
 
 
       //reset selection array
@@ -84,16 +86,22 @@ export default {
         } 
       }).then(response => response.json())
       .then((response)=> {
+
+       const rawPrediction = response['hashtag']
+       if(response['geocode'] != 'undefine')
+       this.coordinates['latitude'] = response['geocode']['lat']
+       this.coordinates['longitude'] = response['geocode']['lng']
+ 
         
         //Extracting all prediction from response json
-        for(var index = 0; index< response.length; index++){
-          this.prediction.push(response[index]['name'])
+        for(var index = 0; index< rawPrediction.length; index++){
+          this.prediction.push(rawPrediction[index]['name'])
         }
+      
       })
     },
     
     onTagClick(hashtag){
-      console.log("Running post request: "+ hashtag)
       this.geocode = []
       fetch(TWITTER_API_URL,{
         method: 'POST',
@@ -109,7 +117,8 @@ export default {
       response.json()
       )
       .then((result) => {
-         
+        console.log('result from: ')
+         console.log(result)
          this.geocode = result
       })
     }

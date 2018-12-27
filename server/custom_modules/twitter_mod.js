@@ -2,15 +2,15 @@ const Twitter = require('twitter')
 var async = require('async')
 
 const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyCLRCFj43n16cxJcYkxAplEwKdAU_7cp6U',
+    key: 'AIzaSyB8HXh5SQwxFA_wogoj1uwpWlVNJ2YbpLQ',
     Promise: Promise
 })
 
 const twitter = new Twitter({
-    consumer_key: 'PFFSatNniGAiZzQF9gqULTf9s',
-    consumer_secret: 'rRmFua4ONyXIksoTV7mvloyJC8oreNBzhavw7dD6hxdZu4w3xs',
-    access_token_key: '1062026593667858440-cnuhVgXOuWiplTtof04UZaFtdyLHhi',
-    access_token_secret:'wULWmIHes0E9VcAo8G5HYAOiYUnxrlhR2xQMWgT1s5FVl'
+    consumer_key: '3b35Rx3c8vsSyeRTxApaZQWAu',
+    consumer_secret: 'EiKpxCpyJ9ogHfplMava2gJOb399iQgo6odWcWGzYMnRW39uqK',
+    access_token_key: '1062026593667858440-nYNNcEjY0EFBAWyzri2jvh9Cjb2nbJ',
+    access_token_secret:'MqYt1yaq1ZG1M4bx5m0LYg28P7FFW4LOCilVLOkJdzD6f'
 })
 
 function getHashtagCoordinates(options,callback){
