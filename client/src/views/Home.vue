@@ -32,8 +32,8 @@
 import inputforms from '../components/inputforms.vue'
 import predictselect from '../components/predictselect.vue'
 import CustomMap from  '../components/map.vue'
-const API_URL = "http://localhost:3400/search"
-const TWITTER_API_URL = "http://localhost:3400/tweets"
+const API_URL = "https://social-media-api.azurewebsites.net/search"
+const TWITTER_API_URL = "https://social-media-api.azurewebsites.net/tweets"
 
 export default {
   

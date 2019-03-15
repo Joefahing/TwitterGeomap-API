@@ -8,10 +8,10 @@
                 <div class="form-group">
                     
                         <li v-for="(item,index) in prediction" style="list-style-type: none;">
-                        <div class="custom-control custom-radio"  style="margin-bottom: 20px;">
-                            <input type="radio" v-bind:id="index" name="customRadio" v-on:click="selectTag" class="custom-control-input" v-bind:value="item" >
-                            <label class="custom-control-label" v-bind:for="index">{{item}}</label>
-                        </div>
+                            <div class="custom-control custom-radio"  style="margin-bottom: 20px;">
+                                <input type="radio" v-bind:id="index" name="customRadio" v-on:click="selectTag" class="custom-control-input" v-bind:value="item" >
+                                <label class="custom-control-label" v-bind:for="index">{{item}}</label>
+                            </div>
                         </li>
                     
                 </div>
@@ -26,7 +26,7 @@ export default {
     props:['prediction'],
     data: function(){
         return{
-            localPrediction: this.prediction,
+            localPrediction: this.prediction
         }
     },
     methods: {

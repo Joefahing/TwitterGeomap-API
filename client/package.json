@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "is-image-url": "^1.1.8",
     "twitter": "^1.7.1",
     "vue": "^2.5.17",
