@@ -1,5 +1,5 @@
 # Swag Search - [Social Media Anaylser](https://stark-hollows-71225.herokuapp.com/)
-A Vue js application created with Node.js and various api
+A Vue js application created with Node.js and various api. Orginally implemented in React.
 
 ## Table of Contents
 * [General Info](#general-information)
