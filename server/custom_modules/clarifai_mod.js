@@ -1,6 +1,6 @@
 const Clarifai = require('clarifai');
 const clarifai = new Clarifai.App({
-    apiKey: 'e7cca6ad823045da8868ba475ac7c22e'
+    apiKey: '236b67ecbdc04b49a308b954d7366e52'
 })
 
 function getPrediction(url, callback){

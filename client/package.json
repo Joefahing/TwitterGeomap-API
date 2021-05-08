@@ -5,11 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server.js"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "is-image-url": "^1.1.8",
+    "twitter": "^1.7.1",
     "vue": "^2.5.17",
+    "vue-google-heatmap": "^1.0.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -45,5 +49,9 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "author": "",
+  "license": "ISC"
 }
